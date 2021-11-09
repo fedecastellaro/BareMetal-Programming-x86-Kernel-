@@ -1,0 +1,100 @@
+.PHONY: clean
+
+BINPATH = ./bin/
+DOCPATH = ./doc/
+INCPATH = ./inc/
+LIBPATH = ./lib/
+SRCPATH = ./src/
+
+AC = nasm
+CC = gcc
+AFLAGS = -f elf32
+CFLAGS = -c -m32 -fno-stack-protector -fno-asynchronous-unwind-tables -Wall -fno-PIC
+
+LDFLAGS = -z max-page-size=0x01000 --oformat=binary -m elf_i386
+
+LDSCRIPT = ./sup/linker.ld
+ODFLAGS = -CprsSx --prefix-addresses
+#en objs guardo todos mis objetos elf
+OBJS = $(BINPATH)init32.elf $(BINPATH)reset.elf $(BINPATH)system_calls.elf $(BINPATH)sys_tables.elf $(BINPATH)keyword.elf $(BINPATH)init16.elf $(BINPATH)main.elf $(BINPATH)funtions.elf $(BINPATH)irq_handlers.elf $(BINPATH)vga.elf $(BINPATH)task0.elf $(BINPATH)task1.elf $(BINPATH)task2.elf
+SRC_NAME = mi_bios
+
+all: $(BINPATH)$(SRC_NAME).bin $(BINPATH)$(SRC_NAME).elf bochs
+	mkdir -p doc
+	hexdump -C $(BINPATH)$(SRC_NAME).bin > $(DOCPATH)$(SRC_NAME)_hexdump.txt
+	objdump $(ODFLAGS) $(BINPATH)$(SRC_NAME).elf > $(DOCPATH)$(SRC_NAME)_objdump.txt
+	readelf -a $(BINPATH)$(SRC_NAME).elf > $(DOCPATH)$(SRC_NAME)_readelf.txt
+
+
+$(BINPATH)$(SRC_NAME).bin: $(OBJS)
+	ld $(LDFLAGS) -T $(LDSCRIPT) $(OBJS) -o $@ -Map $(SRC_NAME).map
+
+$(BINPATH)$(SRC_NAME).elf: $(OBJS)
+	ld -z max-page-size=0x01000 -m elf_i386 -T $(LDSCRIPT) $(OBJS) -o $@
+
+$(BINPATH)main.elf: $(SRCPATH)main.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)sys_tables.elf: $(SRCPATH)sys_tables.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)reset.elf: $(SRCPATH)reset.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)init16.elf: $(SRCPATH)init16.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)init32.elf: $(SRCPATH)init32.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)irq_handlers.elf: $(SRCPATH)irq_handlers.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)task0.elf: $(SRCPATH)task0.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)task1.elf: $(SRCPATH)task1.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)task2.elf: $(SRCPATH)task2.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)vga.elf: $(SRCPATH)vga.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)keyword.elf: $(SRCPATH)keyword.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)system_calls.elf: $(SRCPATH)system_calls.s
+	mkdir -p bin
+	$(AC) $(AFLAGS) $< -o $@ -l $@.lst
+
+$(BINPATH)funtions.elf: $(SRCPATH)funtions.c
+	mkdir -p bin
+	$(CC) $(CFLAGS) $< -o $@
+
+
+bochs:
+	bochs -qf bochsrc
+
+clean:
+	rm $(BINPATH)*.bin $(BINPATH)*.elf $(BINPATH)*.lst *.map $(DOCPATH)*.txt
+
+help:
+	@echo	''
+	@echo	'Uso:'
+	@echo	'  make all:      Compila y patchea Checksum'
+	@echo	'  make bochs:    Ejecuta bochs con el archivo de configuracion de la version 2.6.9'
+	@echo	'  make clean:    Elimina archivos auxiliares'
+	@echo	''

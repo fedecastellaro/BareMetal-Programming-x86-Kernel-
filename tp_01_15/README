@@ -1,0 +1,18 @@
+Ejercicio 15 - 1er cuatrimestre
+
+
+Comando a ejecutar:
+
+make all   -> abre boshc con el programa ya compilado
+
+make help  -> Para más info utilizar el comando
+
+Alumno: Federico Castellaro
+mail  : fedecastellaro9@gmail.com
+Legajo: 153347-2
+
+DISCLAIMER:
+    Estuve teniendo complicaciones a la hora de mostrar la suma de los numeros de 64 bits.
+    Tengo un bug en la funcion que muestra la suma de estos numeros que hace que se vean desfasados ( fijarse que cuando son numeros de 32 bits los muestra perfecto).
+
+    Sin embargo, creo que estoy cumpliendo con todo lo demás que se pide en el enunciado. Agregué también, por recomendación de uno de los ayudantes, una protección dentro de la syscall para que no se puedan acceder a sectores de memoria de kernel.

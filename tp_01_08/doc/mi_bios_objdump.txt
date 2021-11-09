@@ -1,0 +1,502 @@
+
+./bin/mi_bios.elf:     formato del fichero elf32-i386
+./bin/mi_bios.elf
+arquitectura: i386, opciones 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+dirección de inicio 0xfffffff0
+
+Encabezado del Programa:
+    LOAD off    0x00001000 vaddr 0xffff0000 paddr 0xffff0000 align 2**12
+         filesz 0x00000083 memsz 0x00000083 flags r--
+    LOAD off    0x00002000 vaddr 0x00000000 paddr 0xffff1000 align 2**12
+         filesz 0x000000e4 memsz 0x000000e4 flags r--
+    LOAD off    0x00003000 vaddr 0x00200000 paddr 0xffff2000 align 2**12
+         filesz 0x0000001f memsz 0x0000001f flags r--
+    LOAD off    0x00004000 vaddr 0xffffd000 paddr 0xffffd000 align 2**12
+         filesz 0x0000001e memsz 0x0000001e flags r--
+    LOAD off    0x00005000 vaddr 0x00100000 paddr 0xffffe000 align 2**12
+         filesz 0x000001ac memsz 0x000001ac flags r--
+    LOAD off    0x00006000 vaddr 0x00202000 paddr 0xfffff100 align 2**12
+         filesz 0x0000004e memsz 0x0000004e flags r--
+    LOAD off    0x00006800 vaddr 0xfffff800 paddr 0xfffff800 align 2**12
+         filesz 0x000007ff memsz 0x000007ff flags rwx
+    LOAD off    0x00006fff vaddr 0xffffffff paddr 0xffffffff align 2**12
+         filesz 0x00000001 memsz 0x00000001 flags rw-
+   STACK off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**4
+         filesz 0x00000000 memsz 0x00000000 flags rwx
+
+Secciones:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .nucleo       0000001f  00200000  ffff2000  00003000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  1 .isr          000000e4  00000000  ffff1000  00002000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .sys_table_gdt16 0000001e  ffffd000  ffffd000  00004000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .sys_tables   000001ac  00100000  ffffe000  00005000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .datos        0000004e  00202000  fffff100  00006000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  5 .codigo_init16 00000083  ffff0000  ffff0000  00001000  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  6 .codigo_init32 000000d4  fffff800  fffff800  00006800  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  7 .functions_rom 000001f4  fffffa00  fffffa00  00006a00  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  8 .codigo_reset 00000007  fffffff0  fffffff0  00006ff0  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  9 .fill_rom     00000008  fffffff7  fffffff7  00006ff7  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 10 .end_rom      00000001  ffffffff  ffffffff  00006fff  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 11 .comment      00000029  00000000  00000000  00007000  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00200000 l    d  .nucleo	00000000 .nucleo
+00000000 l    d  .isr	00000000 .isr
+ffffd000 l    d  .sys_table_gdt16	00000000 .sys_table_gdt16
+00100000 l    d  .sys_tables	00000000 .sys_tables
+00202000 l    d  .datos	00000000 .datos
+ffff0000 l    d  .codigo_init16	00000000 .codigo_init16
+fffff800 l    d  .codigo_init32	00000000 .codigo_init32
+fffffa00 l    d  .functions_rom	00000000 .functions_rom
+fffffff0 l    d  .codigo_reset	00000000 .codigo_reset
+fffffff7 l    d  .fill_rom	00000000 .fill_rom
+ffffffff l    d  .end_rom	00000000 .end_rom
+00000000 l    d  .comment	00000000 .comment
+00000000 l    df *ABS*	00000000 src/main.s
+00202000 l       .datos	00000000 msgInicio
+0020201e l       .datos	00000000 msgInicio2
+00200007 l       .nucleo	00000000 Colgarse
+0020000a l       .nucleo	00000000 init_entrada_teclado
+00200018 l       .nucleo	00000000 init_entrada_teclado.blanqueo
+00000000 l    df *ABS*	00000000 src/irq_handlers.s
+00000015 l       .isr	00000000 _acumular
+00000026 l       .isr	00000000 _tabla_aux
+00000037 l       .isr	00000000 _grabar
+0000005d l       .isr	00000000 fin_int
+0000006a l       .isr	00000000 default_isr
+00000000 l    df *ABS*	00000000 src/sys_tables.s
+ffffd000 l       .sys_table_gdt16	00000000 GDT16
+00000000 l       *ABS*	00000000 NULL_SEL_16
+00000010 l       *ABS*	00000000 DS_SEL_16
+00000018 l       *ABS*	00000000 GDT16_LENGTH
+00100000 l       .sys_tables	00000000 GDT
+00000000 l       *ABS*	00000000 NULL_SEL
+00000020 l       *ABS*	00000000 GDT_LENGTH
+00100026 l       .sys_tables	00000000 IDT
+00100026 l       .sys_tables	00000000 ISR0_DE
+0010002e l       .sys_tables	00000000 ISR1
+00100036 l       .sys_tables	00000000 ISR2_NMI
+0010003e l       .sys_tables	00000000 ISR3_BP
+00100046 l       .sys_tables	00000000 ISR4_OF
+0010004e l       .sys_tables	00000000 ISR5_BR
+00100056 l       .sys_tables	00000000 ISR6_UD
+0010005e l       .sys_tables	00000000 ISR7_NM
+00100066 l       .sys_tables	00000000 ISR8_DF
+0010006e l       .sys_tables	00000000 ISR9
+00100076 l       .sys_tables	00000000 ISR10_TS
+0010007e l       .sys_tables	00000000 ISR11_NP
+00100086 l       .sys_tables	00000000 ISR12_SS
+0010008e l       .sys_tables	00000000 ISR13_GP
+00100096 l       .sys_tables	00000000 ISR14_PF
+0010009e l       .sys_tables	00000000 ISR15
+001000a6 l       .sys_tables	00000000 ISR16_MF
+001000ae l       .sys_tables	00000000 ISR17_AC
+001000b6 l       .sys_tables	00000000 ISR18_MC
+001000be l       .sys_tables	00000000 ISR19_XF
+001000c6 l       .sys_tables	00000000 ISR20_31
+00100126 l       .sys_tables	00000000 ISR_32
+0010012e l       .sys_tables	00000000 ISR_33
+00100136 l       .sys_tables	00000000 ISR34_47
+00000180 l       *ABS*	00000000 IDT_LENGTH
+00000000 l    df *ABS*	00000000 src/init16.s
+ffff000a l       .codigo_init16	00000000 A20_Enable_No_Stack_return
+ffff0043 l       .codigo_init16	00000000 fault_end
+ffff0044 l       .codigo_init16	00000000 A20_Enable_No_Stack
+ffff004b l       .codigo_init16	00000000 A20_Enable_No_Stack.8042_kbrd_dis
+ffff0054 l       .codigo_init16	00000000 A20_Enable_No_Stack.8042_read_out
+ffff0058 l       .codigo_init16	00000000 A20_Enable_No_Stack.empty_8042_out
+ffff0063 l       .codigo_init16	00000000 A20_Enable_No_Stack.8042_write_out
+ffff006c l       .codigo_init16	00000000 A20_Enable_No_Stack.8042_set_a20
+ffff0078 l       .codigo_init16	00000000 A20_Enable_No_Stack.8042_kbrd_en
+ffff007f l       .codigo_init16	00000000 A20_Enable_No_Stack.empty_8042_in
+ffff0081 l       .codigo_init16	00000000 A20_Enable_No_Stack.a20_enable_no_stack_exit
+ffff0083 l       .codigo_init16	00000000 endcode
+00000000 l    df *ABS*	00000000 src/init32.s
+fffff81a l       .codigo_init32	00000000 start32_launcher.stack_init
+fffff8ad l       .codigo_init32	00000000 start32_launcher.guard
+fffff8b0 l       .codigo_init32	00000000 InitPIC
+00000000 l    df *ABS*	00000000 funtions.c
+00000000 l    df *ABS*	00000000 src/reset.s
+fffffff4 l       .codigo_reset	00000000 halted
+fffffff7 l       .codigo_reset	00000000 end
+fffffff0 g       *ABS*	00000000 __RESET_LMA
+00000093 g       .isr	00000000 isr7_handler_NM
+000000ab g       .isr	00000000 isr12_handler_SS
+00010000 g       *ABS*	00000000 __TABLE_SIZE
+0000001f g       *ABS*	00000000 __NUCLEO_SIZE__
+fffffa00 g       *ABS*	00000000 __FUNCTIONS_ROM_VMA
+ffff0000 g       *ABS*	00000000 __INIT_16_LMA
+fffffa00 g       *ABS*	00000000 __FUNCTIONS_ROM_LMA
+fffffa47 g     F .functions_rom	0000002c _acumular_en_buffer
+00000010 g       *ABS*	00000000 DS_SEL
+0000008a g       .isr	00000000 isr6_handler_UD
+00000063 g       .isr	00000000 isr_tick
+fffffff0 g       .codigo_reset	00000000 reset
+1ff08000 g       *ABS*	00000000 __STACK_START_32
+ffff0000 g       *ABS*	00000000 __INIT_16_VMA
+00100020 g       .sys_tables	00000000 _gdtr
+fffff100 g       *ABS*	00000000 __DATOS_LMA
+000000de g       .isr	00000000 isr32_255_handler
+00202000 g       *ABS*	00000000 __DATOS_VMA
+fffffa73 g     F .functions_rom	000000d8 _acumular_en_tabla_fin
+00100000 g       *ABS*	00000000 __SYS_TABLES_VMA
+00009000 g       *ABS*	00000000 __STACK_START_16
+000000b1 g       .isr	00000000 isr13_handler_GP
+000001ac g       *ABS*	00000000 __SYS_SIZE__
+0000009f g       .isr	00000000 isr10_handler_TS
+000000cc g       .isr	00000000 isr18_handler_MC
+00000078 g       .isr	00000000 isr3_handler_BP
+1ff08fff g       *ABS*	00000000 __STACK_END_32
+0000006c g       .isr	00000000 isr0_handler_DE
+00000000 g       *ABS*	00000000 __TECLADO_FUNC_VMA
+000000e4 g       *ABS*	00000000 __TECLADO_FUNC_SIZE_
+00000008 g       *ABS*	00000000 CS_SEL_32
+0000007e g       .isr	00000000 isr4_handler_OF
+000000d2 g       .isr	00000000 isr19_handler_XF
+000000bd g       .isr	00000000 isr16_handler_MF
+00000084 g       .isr	00000000 isr5_handler_BR
+ffff2000 g       *ABS*	00000000 __NUCLEO_LMA
+000003ff g       *ABS*	00000000 __STACK_SIZE_32
+00009fff g       *ABS*	00000000 __STACK_END_16
+00200000 g       *ABS*	00000000 __NUCLEO_VMA
+00000008 g       *ABS*	00000000 CS_SEL_16
+fffffff0 g       *ABS*	00000000 __RESET_VMA
+001001a6 g       .sys_tables	00000000 _idtr
+00210000 g       *ABS*	00000000 __TABLE_INIT
+fffff800 g       *ABS*	00000000 __INIT_32_VMA
+000000a5 g       .isr	00000000 isr11_handler_NP
+00000099 g       .isr	00000000 isr8_handler_DF
+ffff1000 g       *ABS*	00000000 __TECLADO_FUNC_LMA
+000000d8 g       .isr	00000000 isr20_handler_VE
+fffffb4b g     F .functions_rom	000000a9 _acumular_en_tabla_aux
+000000b7 g       .isr	00000000 isr14_handler_PF
+0000004e g       *ABS*	00000000 __DATOS_SIZE__
+ffffd000 g       *ABS*	00000000 __GDT16_TABLE_LMA
+00000018 g       *ABS*	00000000 NO_SEL_32
+ffffd018 g       .sys_table_gdt16	00000000 _gdtr16
+00220000 g       *ABS*	00000000 __TABLE_END
+00000072 g       .isr	00000000 isr2_handler_NMI
+ffff0000 g       .codigo_init16	00000000 start16
+00000000 g       .isr	00000000 isr_teclado
+00200000 g       .nucleo	00000000 start32
+000000c6 g       .isr	00000000 isr17_handler_AC
+fffff800 g       *ABS*	00000000 __INIT_32_LMA
+ffffe000 g       *ABS*	00000000 __SYS_TABLES_LMA
+fffffa00 g     F .functions_rom	00000047 __fast_memcpy_rom
+fffff800 g       .codigo_init32	00000000 start32_launcher
+ffffd000 g       *ABS*	00000000 __GDT16_TABLE_VMA
+
+
+Contenido de la sección .nucleo:
+ 200000 e8050000 00eb00f4 ebfdbe00 00210031  .............!.1
+ 200010 ffb90f00 000001ce 4ec60600 e2fac3    ........N...... 
+Contenido de la sección .isr:
+ 0000 60e46020 c078563c 1c742c3c 0176063c  `.` .xV<.t,<.v.<
+ 0010 0b7f02eb 115589e5 50683000 2100e824  .....U..Ph0.!..$
+ 0020 faffffc9 eb375589 e5506820 002100e8  .....7U..Ph .!..
+ 0030 17fbffff c9ebde55 89e55068 30002100  .......U..Ph0.!.
+ 0040 e802faff ff5589e5 68000021 00682000  .....U..h..!.h .
+ 0050 2100e81c faffffc9 6687dbeb 00b020e6  !.......f..... .
+ 0060 2061f460 6687dbf4 ebf990f4 66ba0000   a.`f.......f...
+ 0070 ebf866ba 0200ebf2 66ba0300 ebec66ba  ..f.....f.....f.
+ 0080 0400ebe6 66ba0500 ebe066ba 06006687  ....f.....f...f.
+ 0090 dbebd766 ba0700eb d166ba08 00ebcb66  ...f.....f.....f
+ 00a0 ba0a00eb c566ba0b 00ebbf66 ba0c00eb  .....f.....f....
+ 00b0 b966ba0d 00ebb366 ba0e00eb ad6687db  .f.....f.....f..
+ 00c0 66ba1000 eba466ba 1100eb9e 66ba1200  f.....f.....f...
+ 00d0 eb9866ba 1300eb92 66ba1400 eb8c66ba  ..f.....f.....f.
+ 00e0 2000eb86                              ...            
+Contenido de la sección .sys_table_gdt16:
+ ffffd000 00000000 00000000 ffff0000 009acf00  ................
+ ffffd010 ffff0000 0092cf00 170000d0 ffff      ..............  
+Contenido de la sección .sys_tables:
+ 100000 00000000 00000000 ffff0000 009acf00  ................
+ 100010 ffff0000 0092cf00 ffff0000 0012cf00  ................
+ 100020 1f000000 10006c00 0800008f 00000000  ......l.........
+ 100030 00000000 00007200 0800008f 00007800  ......r.......x.
+ 100040 0800008f 00007e00 0800008f 00008400  ......~.........
+ 100050 0800008f 00008a00 0800008f 00009300  ................
+ 100060 0800008f 00009900 0800008f 00000000  ................
+ 100070 00000000 00009f00 0800008f 0000a500  ................
+ 100080 0800008f 0000ab00 1800008f 0000b100  ................
+ 100090 0800008f 0000b700 0800008f 00000000  ................
+ 1000a0 00000000 0000bd00 0800008f 0000c600  ................
+ 1000b0 0800008f 0000cc00 0800008f 0000d200  ................
+ 1000c0 0800008f 00000000 00000000 00000000  ................
+ 1000d0 00000000 00000000 00000000 00000000  ................
+ 1000e0 00000000 00000000 00000000 00000000  ................
+ 1000f0 00000000 00000000 00000000 00000000  ................
+ 100100 00000000 00000000 00000000 00000000  ................
+ 100110 00000000 00000000 00000000 00000000  ................
+ 100120 00000000 00006300 0800008f 00000000  ......c.........
+ 100130 0800008f 00000000 00000000 00000000  ................
+ 100140 00000000 00000000 00000000 00000000  ................
+ 100150 00000000 00000000 00000000 00000000  ................
+ 100160 00000000 00000000 00000000 00000000  ................
+ 100170 00000000 00000000 00000000 00000000  ................
+ 100180 00000000 00000000 00000000 00000000  ................
+ 100190 00000000 00000000 00000000 00000000  ................
+ 1001a0 00000000 00007f01 26001000           ........&...    
+Contenido de la sección .datos:
+ 202000 54443320 2d205450 31202d20 456a6572  TD3 - TP1 - Ejer
+ 202010 63696369 6f203620 2e2e2e2e 2e004361  cicio 6 ......Ca
+ 202020 7374656c 6c61726f 2c204665 64657269  stellaro, Federi
+ 202030 636f3a20 66656465 63617374 656c6c61  co: fedecastella
+ 202040 726f3940 676d6169 6c2e636f 6d00      ro9@gmail.com.  
+Contenido de la sección .codigo_init16:
+ ffff0000 66a90000 0000753b eb3a6631 c00f22d8  f.....u;.:f1..".
+ ffff0010 8cc88ed8 b800908e d0b8ff9f 89c40f20  ............... 
+ ffff0020 c0660d00 0000600f 22c00f09 660f0116  .f....`."...f...
+ ffff0030 18d00f01 e083c801 0f01f066 ea00f8ff  ...........f....
+ ffff0040 ff0800f4 31c0bf4b 00eb34b0 ade664bf  ....1..K..4...d.
+ ffff0050 5400eb2b b0d0e664 31dbe460 89c3bf63  T..+...d1..`...c
+ ffff0060 00eb1cb0 d1e664bf 6c00eb13 89d883c8  ......d.l.......
+ ffff0070 02e660bf 7800eb07 b0aee664 bf8100ff  ..`.x......d....
+ ffff0080 e7eb87                               ...             
+Contenido de la sección .codigo_init32:
+ fffff800 66b81000 8ed88ec0 8ee88ee0 8ed0bcff  f...............
+ fffff810 8ff01f31 c0b9ff03 000050e2 fdbcff8f  ...1......P.....
+ fffff820 f01f5589 e568ac01 00006800 00100068  ..U..h....h....h
+ fffff830 00e0ffff e8c70100 00c983f8 01756e0f  .............un.
+ fffff840 01152000 10000f01 1da60110 006687db  .. ..........f..
+ fffff850 5589e568 1f000000 68000020 00680020  U..h....h.. .h. 
+ fffff860 ffffe899 010000c9 83f80175 405589e5  ...........u@U..
+ fffff870 68e40000 00680000 00006800 10ffffe8  h....h....h.....
+ fffff880 7c010000 5589e568 4e000000 68002020  |...U..hN...h.  
+ fffff890 006800f1 ffffe865 010000c9 83f80175  .h.....e.......u
+ fffff8a0 0ce80a00 0000ea00 00200008 00f4ebfd  ......... ......
+ fffff8b0 b011e620 e6a0b020 e621b028 e6a1b004  ... ... .!.(....
+ fffff8c0 e621b002 e6a1b001 e621e6a1 b0fce621  .!.......!.....!
+ fffff8d0 e6a1fbc3                             ....            
+Contenido de la sección .functions_rom:
+ fffffa00 5589e583 ec10c645 ffff837d 10007521  U......E...}..u!
+ fffffa10 b8010000 00eb2e83 6d10018b 55088d42  ........m...U..B
+ fffffa20 04894508 8b450c8d 4804894d 0c8b1289  ..E..E..H..M....
+ fffffa30 10837d10 0075e083 7d100075 04c645ff  ..}..u..}..u..E.
+ fffffa40 010fb645 ffc9c355 89e583ec 048b450c  ...E...U......E.
+ fffffa50 8845fceb 04834508 018b4508 0fb60084  .E....E...E.....
+ fffffa60 c075f28b 45080fb6 55fc8810 b8010000  .u..E...U.......
+ fffffa70 00c9c355 89e583ec 10c645ff 00eb160f  ...U......E.....
+ fffffa80 be55ff8b 450c01d0 c600000f b645ff83  .U..E........E..
+ fffffa90 c0018845 ff807dff 0f7ee4c6 45ff00eb  ...E..}..~..E...
+ fffffaa0 0a0fb645 ff83c001 8845ff0f be55ff8b  ...E.....E...U..
+ fffffab0 450801d0 0fb60084 c075e680 7dff097e  E........u..}..~
+ fffffac0 41c645fe 00eb330f be55ff0f be45fe29  A.E...3..U...E.)
+ fffffad0 c289d08d 50ff8b45 0801d00f be55feb9  ....P..E.....U..
+ fffffae0 0f000000 29d18b55 0c01ca0f b6008802  ....)..U........
+ fffffaf0 0fb645fe 83c00188 45fe807d fe087ec7  ..E.....E..}..~.
+ fffffb00 eb42c645 fe00eb33 0fbe55ff 0fbe45fe  .B.E...3..U...E.
+ fffffb10 29c289d0 8d50ff8b 450801d0 0fbe55fe  )....P..E.....U.
+ fffffb20 b90f0000 0029d18b 550c01ca 0fb60088  .....)..U.......
+ fffffb30 020fb645 fe83c001 8845fe0f b645fe3a  ...E.....E...E.:
+ fffffb40 45ff7ec4 b8010000 00c9c355 89e583ec  E.~........U....
+ fffffb50 148b450c 8845eceb 04834508 018b4508  ..E..E....E...E.
+ fffffb60 0fb60084 c075f28b 45082d20 10020088  .....u..E.- ....
+ fffffb70 45ff807d ec0b7506 c645ec00 eb0a0fb6  E..}..u..E......
+ fffffb80 45ec83e8 018845ec 807dff08 7f31807d  E.....E..}...1.}
+ fffffb90 ff007511 807dec01 750b8b45 080fb655  ..u..}..u..E...U
+ fffffba0 ec8810eb 490fbe45 ff8d5001 0fb645ec  ....I..E..P...E.
+ fffffbb0 39c2753a 8b45080f b655ec88 10eb2f80  9.u:.E...U..../.
+ fffffbc0 7dff0975 11807dec 01750b8b 45080fb6  }..u..}..u..E...
+ fffffbd0 55ec8810 eb180fbe 45ff8d50 f80fb645  U.......E..P...E
+ fffffbe0 ec39c275 098b4508 0fb655ec 88100fb6  .9.u..E...U.....
+ fffffbf0 45ecc9c3                             E...            
+Contenido de la sección .codigo_reset:
+ fffffff0 fce90c00 f4ebfd                      .......         
+Contenido de la sección .fill_rom:
+ fffffff7 90909090 90909090                    ........        
+Contenido de la sección .end_rom:
+ ffffffff 90                                   .               
+Contenido de la sección .comment:
+ 0000 4743433a 20285562 756e7475 20372e35  GCC: (Ubuntu 7.5
+ 0010 2e302d33 7562756e 7475317e 31382e30  .0-3ubuntu1~18.0
+ 0020 34292037 2e352e30 00                 4) 7.5.0.       
+
+Desensamblado de la sección .functions_rom:
+fffffa00 <__fast_memcpy_rom> push   %ebp
+fffffa01 <__fast_memcpy_rom+0x1> mov    %esp,%ebp
+fffffa03 <__fast_memcpy_rom+0x3> sub    $0x10,%esp
+fffffa06 <__fast_memcpy_rom+0x6> movb   $0xff,-0x1(%ebp)
+fffffa0a <__fast_memcpy_rom+0xa> cmpl   $0x0,0x10(%ebp)
+fffffa0e <__fast_memcpy_rom+0xe> jne    fffffa31 <__fast_memcpy_rom+0x31>
+fffffa10 <__fast_memcpy_rom+0x10> mov    $0x1,%eax
+fffffa15 <__fast_memcpy_rom+0x15> jmp    fffffa45 <__fast_memcpy_rom+0x45>
+fffffa17 <__fast_memcpy_rom+0x17> subl   $0x1,0x10(%ebp)
+fffffa1b <__fast_memcpy_rom+0x1b> mov    0x8(%ebp),%edx
+fffffa1e <__fast_memcpy_rom+0x1e> lea    0x4(%edx),%eax
+fffffa21 <__fast_memcpy_rom+0x21> mov    %eax,0x8(%ebp)
+fffffa24 <__fast_memcpy_rom+0x24> mov    0xc(%ebp),%eax
+fffffa27 <__fast_memcpy_rom+0x27> lea    0x4(%eax),%ecx
+fffffa2a <__fast_memcpy_rom+0x2a> mov    %ecx,0xc(%ebp)
+fffffa2d <__fast_memcpy_rom+0x2d> mov    (%edx),%edx
+fffffa2f <__fast_memcpy_rom+0x2f> mov    %edx,(%eax)
+fffffa31 <__fast_memcpy_rom+0x31> cmpl   $0x0,0x10(%ebp)
+fffffa35 <__fast_memcpy_rom+0x35> jne    fffffa17 <__fast_memcpy_rom+0x17>
+fffffa37 <__fast_memcpy_rom+0x37> cmpl   $0x0,0x10(%ebp)
+fffffa3b <__fast_memcpy_rom+0x3b> jne    fffffa41 <__fast_memcpy_rom+0x41>
+fffffa3d <__fast_memcpy_rom+0x3d> movb   $0x1,-0x1(%ebp)
+fffffa41 <__fast_memcpy_rom+0x41> movzbl -0x1(%ebp),%eax
+fffffa45 <__fast_memcpy_rom+0x45> leave  
+fffffa46 <__fast_memcpy_rom+0x46> ret    
+fffffa47 <_acumular_en_buffer> push   %ebp
+fffffa48 <_acumular_en_buffer+0x1> mov    %esp,%ebp
+fffffa4a <_acumular_en_buffer+0x3> sub    $0x4,%esp
+fffffa4d <_acumular_en_buffer+0x6> mov    0xc(%ebp),%eax
+fffffa50 <_acumular_en_buffer+0x9> mov    %al,-0x4(%ebp)
+fffffa53 <_acumular_en_buffer+0xc> jmp    fffffa59 <_acumular_en_buffer+0x12>
+fffffa55 <_acumular_en_buffer+0xe> addl   $0x1,0x8(%ebp)
+fffffa59 <_acumular_en_buffer+0x12> mov    0x8(%ebp),%eax
+fffffa5c <_acumular_en_buffer+0x15> movzbl (%eax),%eax
+fffffa5f <_acumular_en_buffer+0x18> test   %al,%al
+fffffa61 <_acumular_en_buffer+0x1a> jne    fffffa55 <_acumular_en_buffer+0xe>
+fffffa63 <_acumular_en_buffer+0x1c> mov    0x8(%ebp),%eax
+fffffa66 <_acumular_en_buffer+0x1f> movzbl -0x4(%ebp),%edx
+fffffa6a <_acumular_en_buffer+0x23> mov    %dl,(%eax)
+fffffa6c <_acumular_en_buffer+0x25> mov    $0x1,%eax
+fffffa71 <_acumular_en_buffer+0x2a> leave  
+fffffa72 <_acumular_en_buffer+0x2b> ret    
+fffffa73 <_acumular_en_tabla_fin> push   %ebp
+fffffa74 <_acumular_en_tabla_fin+0x1> mov    %esp,%ebp
+fffffa76 <_acumular_en_tabla_fin+0x3> sub    $0x10,%esp
+fffffa79 <_acumular_en_tabla_fin+0x6> movb   $0x0,-0x1(%ebp)
+fffffa7d <_acumular_en_tabla_fin+0xa> jmp    fffffa95 <_acumular_en_tabla_fin+0x22>
+fffffa7f <_acumular_en_tabla_fin+0xc> movsbl -0x1(%ebp),%edx
+fffffa83 <_acumular_en_tabla_fin+0x10> mov    0xc(%ebp),%eax
+fffffa86 <_acumular_en_tabla_fin+0x13> add    %edx,%eax
+fffffa88 <_acumular_en_tabla_fin+0x15> movb   $0x0,(%eax)
+fffffa8b <_acumular_en_tabla_fin+0x18> movzbl -0x1(%ebp),%eax
+fffffa8f <_acumular_en_tabla_fin+0x1c> add    $0x1,%eax
+fffffa92 <_acumular_en_tabla_fin+0x1f> mov    %al,-0x1(%ebp)
+fffffa95 <_acumular_en_tabla_fin+0x22> cmpb   $0xf,-0x1(%ebp)
+fffffa99 <_acumular_en_tabla_fin+0x26> jle    fffffa7f <_acumular_en_tabla_fin+0xc>
+fffffa9b <_acumular_en_tabla_fin+0x28> movb   $0x0,-0x1(%ebp)
+fffffa9f <_acumular_en_tabla_fin+0x2c> jmp    fffffaab <_acumular_en_tabla_fin+0x38>
+fffffaa1 <_acumular_en_tabla_fin+0x2e> movzbl -0x1(%ebp),%eax
+fffffaa5 <_acumular_en_tabla_fin+0x32> add    $0x1,%eax
+fffffaa8 <_acumular_en_tabla_fin+0x35> mov    %al,-0x1(%ebp)
+fffffaab <_acumular_en_tabla_fin+0x38> movsbl -0x1(%ebp),%edx
+fffffaaf <_acumular_en_tabla_fin+0x3c> mov    0x8(%ebp),%eax
+fffffab2 <_acumular_en_tabla_fin+0x3f> add    %edx,%eax
+fffffab4 <_acumular_en_tabla_fin+0x41> movzbl (%eax),%eax
+fffffab7 <_acumular_en_tabla_fin+0x44> test   %al,%al
+fffffab9 <_acumular_en_tabla_fin+0x46> jne    fffffaa1 <_acumular_en_tabla_fin+0x2e>
+fffffabb <_acumular_en_tabla_fin+0x48> cmpb   $0x9,-0x1(%ebp)
+fffffabf <_acumular_en_tabla_fin+0x4c> jle    fffffb02 <_acumular_en_tabla_fin+0x8f>
+fffffac1 <_acumular_en_tabla_fin+0x4e> movb   $0x0,-0x2(%ebp)
+fffffac5 <_acumular_en_tabla_fin+0x52> jmp    fffffafa <_acumular_en_tabla_fin+0x87>
+fffffac7 <_acumular_en_tabla_fin+0x54> movsbl -0x1(%ebp),%edx
+fffffacb <_acumular_en_tabla_fin+0x58> movsbl -0x2(%ebp),%eax
+fffffacf <_acumular_en_tabla_fin+0x5c> sub    %eax,%edx
+fffffad1 <_acumular_en_tabla_fin+0x5e> mov    %edx,%eax
+fffffad3 <_acumular_en_tabla_fin+0x60> lea    -0x1(%eax),%edx
+fffffad6 <_acumular_en_tabla_fin+0x63> mov    0x8(%ebp),%eax
+fffffad9 <_acumular_en_tabla_fin+0x66> add    %edx,%eax
+fffffadb <_acumular_en_tabla_fin+0x68> movsbl -0x2(%ebp),%edx
+fffffadf <_acumular_en_tabla_fin+0x6c> mov    $0xf,%ecx
+fffffae4 <_acumular_en_tabla_fin+0x71> sub    %edx,%ecx
+fffffae6 <_acumular_en_tabla_fin+0x73> mov    0xc(%ebp),%edx
+fffffae9 <_acumular_en_tabla_fin+0x76> add    %ecx,%edx
+fffffaeb <_acumular_en_tabla_fin+0x78> movzbl (%eax),%eax
+fffffaee <_acumular_en_tabla_fin+0x7b> mov    %al,(%edx)
+fffffaf0 <_acumular_en_tabla_fin+0x7d> movzbl -0x2(%ebp),%eax
+fffffaf4 <_acumular_en_tabla_fin+0x81> add    $0x1,%eax
+fffffaf7 <_acumular_en_tabla_fin+0x84> mov    %al,-0x2(%ebp)
+fffffafa <_acumular_en_tabla_fin+0x87> cmpb   $0x8,-0x2(%ebp)
+fffffafe <_acumular_en_tabla_fin+0x8b> jle    fffffac7 <_acumular_en_tabla_fin+0x54>
+fffffb00 <_acumular_en_tabla_fin+0x8d> jmp    fffffb44 <_acumular_en_tabla_fin+0xd1>
+fffffb02 <_acumular_en_tabla_fin+0x8f> movb   $0x0,-0x2(%ebp)
+fffffb06 <_acumular_en_tabla_fin+0x93> jmp    fffffb3b <_acumular_en_tabla_fin+0xc8>
+fffffb08 <_acumular_en_tabla_fin+0x95> movsbl -0x1(%ebp),%edx
+fffffb0c <_acumular_en_tabla_fin+0x99> movsbl -0x2(%ebp),%eax
+fffffb10 <_acumular_en_tabla_fin+0x9d> sub    %eax,%edx
+fffffb12 <_acumular_en_tabla_fin+0x9f> mov    %edx,%eax
+fffffb14 <_acumular_en_tabla_fin+0xa1> lea    -0x1(%eax),%edx
+fffffb17 <_acumular_en_tabla_fin+0xa4> mov    0x8(%ebp),%eax
+fffffb1a <_acumular_en_tabla_fin+0xa7> add    %edx,%eax
+fffffb1c <_acumular_en_tabla_fin+0xa9> movsbl -0x2(%ebp),%edx
+fffffb20 <_acumular_en_tabla_fin+0xad> mov    $0xf,%ecx
+fffffb25 <_acumular_en_tabla_fin+0xb2> sub    %edx,%ecx
+fffffb27 <_acumular_en_tabla_fin+0xb4> mov    0xc(%ebp),%edx
+fffffb2a <_acumular_en_tabla_fin+0xb7> add    %ecx,%edx
+fffffb2c <_acumular_en_tabla_fin+0xb9> movzbl (%eax),%eax
+fffffb2f <_acumular_en_tabla_fin+0xbc> mov    %al,(%edx)
+fffffb31 <_acumular_en_tabla_fin+0xbe> movzbl -0x2(%ebp),%eax
+fffffb35 <_acumular_en_tabla_fin+0xc2> add    $0x1,%eax
+fffffb38 <_acumular_en_tabla_fin+0xc5> mov    %al,-0x2(%ebp)
+fffffb3b <_acumular_en_tabla_fin+0xc8> movzbl -0x2(%ebp),%eax
+fffffb3f <_acumular_en_tabla_fin+0xcc> cmp    -0x1(%ebp),%al
+fffffb42 <_acumular_en_tabla_fin+0xcf> jle    fffffb08 <_acumular_en_tabla_fin+0x95>
+fffffb44 <_acumular_en_tabla_fin+0xd1> mov    $0x1,%eax
+fffffb49 <_acumular_en_tabla_fin+0xd6> leave  
+fffffb4a <_acumular_en_tabla_fin+0xd7> ret    
+fffffb4b <_acumular_en_tabla_aux> push   %ebp
+fffffb4c <_acumular_en_tabla_aux+0x1> mov    %esp,%ebp
+fffffb4e <_acumular_en_tabla_aux+0x3> sub    $0x14,%esp
+fffffb51 <_acumular_en_tabla_aux+0x6> mov    0xc(%ebp),%eax
+fffffb54 <_acumular_en_tabla_aux+0x9> mov    %al,-0x14(%ebp)
+fffffb57 <_acumular_en_tabla_aux+0xc> jmp    fffffb5d <_acumular_en_tabla_aux+0x12>
+fffffb59 <_acumular_en_tabla_aux+0xe> addl   $0x1,0x8(%ebp)
+fffffb5d <_acumular_en_tabla_aux+0x12> mov    0x8(%ebp),%eax
+fffffb60 <_acumular_en_tabla_aux+0x15> movzbl (%eax),%eax
+fffffb63 <_acumular_en_tabla_aux+0x18> test   %al,%al
+fffffb65 <_acumular_en_tabla_aux+0x1a> jne    fffffb59 <_acumular_en_tabla_aux+0xe>
+fffffb67 <_acumular_en_tabla_aux+0x1c> mov    0x8(%ebp),%eax
+fffffb6a <_acumular_en_tabla_aux+0x1f> sub    $0x21020,%eax
+fffffb6f <_acumular_en_tabla_aux+0x24> mov    %al,-0x1(%ebp)
+fffffb72 <_acumular_en_tabla_aux+0x27> cmpb   $0xb,-0x14(%ebp)
+fffffb76 <_acumular_en_tabla_aux+0x2b> jne    fffffb7e <_acumular_en_tabla_aux+0x33>
+fffffb78 <_acumular_en_tabla_aux+0x2d> movb   $0x0,-0x14(%ebp)
+fffffb7c <_acumular_en_tabla_aux+0x31> jmp    fffffb88 <_acumular_en_tabla_aux+0x3d>
+fffffb7e <_acumular_en_tabla_aux+0x33> movzbl -0x14(%ebp),%eax
+fffffb82 <_acumular_en_tabla_aux+0x37> sub    $0x1,%eax
+fffffb85 <_acumular_en_tabla_aux+0x3a> mov    %al,-0x14(%ebp)
+fffffb88 <_acumular_en_tabla_aux+0x3d> cmpb   $0x8,-0x1(%ebp)
+fffffb8c <_acumular_en_tabla_aux+0x41> jg     fffffbbf <_acumular_en_tabla_aux+0x74>
+fffffb8e <_acumular_en_tabla_aux+0x43> cmpb   $0x0,-0x1(%ebp)
+fffffb92 <_acumular_en_tabla_aux+0x47> jne    fffffba5 <_acumular_en_tabla_aux+0x5a>
+fffffb94 <_acumular_en_tabla_aux+0x49> cmpb   $0x1,-0x14(%ebp)
+fffffb98 <_acumular_en_tabla_aux+0x4d> jne    fffffba5 <_acumular_en_tabla_aux+0x5a>
+fffffb9a <_acumular_en_tabla_aux+0x4f> mov    0x8(%ebp),%eax
+fffffb9d <_acumular_en_tabla_aux+0x52> movzbl -0x14(%ebp),%edx
+fffffba1 <_acumular_en_tabla_aux+0x56> mov    %dl,(%eax)
+fffffba3 <_acumular_en_tabla_aux+0x58> jmp    fffffbee <_acumular_en_tabla_aux+0xa3>
+fffffba5 <_acumular_en_tabla_aux+0x5a> movsbl -0x1(%ebp),%eax
+fffffba9 <_acumular_en_tabla_aux+0x5e> lea    0x1(%eax),%edx
+fffffbac <_acumular_en_tabla_aux+0x61> movzbl -0x14(%ebp),%eax
+fffffbb0 <_acumular_en_tabla_aux+0x65> cmp    %eax,%edx
+fffffbb2 <_acumular_en_tabla_aux+0x67> jne    fffffbee <_acumular_en_tabla_aux+0xa3>
+fffffbb4 <_acumular_en_tabla_aux+0x69> mov    0x8(%ebp),%eax
+fffffbb7 <_acumular_en_tabla_aux+0x6c> movzbl -0x14(%ebp),%edx
+fffffbbb <_acumular_en_tabla_aux+0x70> mov    %dl,(%eax)
+fffffbbd <_acumular_en_tabla_aux+0x72> jmp    fffffbee <_acumular_en_tabla_aux+0xa3>
+fffffbbf <_acumular_en_tabla_aux+0x74> cmpb   $0x9,-0x1(%ebp)
+fffffbc3 <_acumular_en_tabla_aux+0x78> jne    fffffbd6 <_acumular_en_tabla_aux+0x8b>
+fffffbc5 <_acumular_en_tabla_aux+0x7a> cmpb   $0x1,-0x14(%ebp)
+fffffbc9 <_acumular_en_tabla_aux+0x7e> jne    fffffbd6 <_acumular_en_tabla_aux+0x8b>
+fffffbcb <_acumular_en_tabla_aux+0x80> mov    0x8(%ebp),%eax
+fffffbce <_acumular_en_tabla_aux+0x83> movzbl -0x14(%ebp),%edx
+fffffbd2 <_acumular_en_tabla_aux+0x87> mov    %dl,(%eax)
+fffffbd4 <_acumular_en_tabla_aux+0x89> jmp    fffffbee <_acumular_en_tabla_aux+0xa3>
+fffffbd6 <_acumular_en_tabla_aux+0x8b> movsbl -0x1(%ebp),%eax
+fffffbda <_acumular_en_tabla_aux+0x8f> lea    -0x8(%eax),%edx
+fffffbdd <_acumular_en_tabla_aux+0x92> movzbl -0x14(%ebp),%eax
+fffffbe1 <_acumular_en_tabla_aux+0x96> cmp    %eax,%edx
+fffffbe3 <_acumular_en_tabla_aux+0x98> jne    fffffbee <_acumular_en_tabla_aux+0xa3>
+fffffbe5 <_acumular_en_tabla_aux+0x9a> mov    0x8(%ebp),%eax
+fffffbe8 <_acumular_en_tabla_aux+0x9d> movzbl -0x14(%ebp),%edx
+fffffbec <_acumular_en_tabla_aux+0xa1> mov    %dl,(%eax)
+fffffbee <_acumular_en_tabla_aux+0xa3> movzbl -0x14(%ebp),%eax
+fffffbf2 <_acumular_en_tabla_aux+0xa7> leave  
+fffffbf3 <_acumular_en_tabla_aux+0xa8> ret    

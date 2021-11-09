@@ -1,0 +1,424 @@
+Encabezado ELF:
+  Mágico:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Clase:                             ELF32
+  Datos:                             complemento a 2, little endian
+  Versión:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  Versión ABI:                       0
+  Tipo:                              EXEC (Fichero ejecutable)
+  Máquina:                           Intel 80386
+  Versión:                           0x1
+  Dirección del punto de entrada:               0xfffffff0
+  Inicio de encabezados de programa:          52 (bytes en el fichero)
+  Inicio de encabezados de sección:          75332 (bytes en el fichero)
+  Opciones:                          0x0
+  Tamaño de este encabezado:         52 (bytes)
+  Tamaño de encabezados de programa: 32 (bytes)
+  Número de encabezados de programa: 17
+  Tamaño de encabezados de sección:  40 (bytes)
+  Número de encabezados de sección:  24
+  Índice de tabla de cadenas de sección de encabezado: 23
+
+Encabezados de Sección:
+  [Nr] Nombre            Tipo            Direc    Desp   Tam    ES Opt En Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .nucleo           PROGBITS        01200000 007000 000215 00   A  0   0  1
+  [ 2] .isr              PROGBITS        00000000 006000 000528 00   A  0   0  1
+  [ 3] .sys_tables       PROGBITS        00100000 00b000 0001b3 00   A  0   0  1
+  [ 4] .datos            PROGBITS        01202000 008000 00010a 00   A  0   0  1
+  [ 5] .task0_txt        PROGBITS        01300000 009000 000003 00   A  0   0  1
+  [ 6] .task0_bss        NOBITS          01301000 003000 000066 00   A  0   0  1
+  [ 7] .task1_txt        PROGBITS        01310000 003000 000062 00   A  0   0  1
+  [ 8] .task1_bss        NOBITS          01311000 005000 000066 00   A  0   0  1
+  [ 9] .task1_data       PROGBITS        01312000 004000 000025 00   A  0   0  1
+  [10] .task2_txt        PROGBITS        01320000 00c000 000002 00   A  0   0  1
+  [11] .task2_bss        NOBITS          01321000 006000 000066 00   A  0   0  1
+  [12] .task2_data       PROGBITS        01322000 005000 00001d 00   A  0   0  1
+  [13] .sys_table_gdt16  PROGBITS        ffffd000 00d000 00001e 00   A  0   0  1
+  [14] .codigo_init16    PROGBITS        ffff0000 001000 0013ac 00   A  0   0  1
+  [15] .codigo_init32    PROGBITS        ffffa000 00a000 00098e 00   A  0   0  1
+  [16] .functions_rom    PROGBITS        ffffe000 00e000 0007e9 00  AX  0   0  1
+  [17] .codigo_reset     PROGBITS        fffffff0 00fff0 000007 00   A  0   0  1
+  [18] .fill_rom         PROGBITS        fffffff7 00fff7 000008 00  WA  0   0  1
+  [19] .end_rom          PROGBITS        ffffffff 00ffff 000001 00  WA  0   0  1
+  [20] .comment          PROGBITS        00000000 010000 000029 01  MS  0   0  1
+  [21] .symtab           SYMTAB          00000000 01002c 0013f0 10     22 148  4
+  [22] .strtab           STRTAB          00000000 01141c 001128 00      0   0  1
+  [23] .shstrtab         STRTAB          00000000 012544 0000fd 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  p (processor specific)
+
+No hay grupos de sección en este fichero.
+
+Encabezados de Programa:
+  Tipo           Desplaz  DirVirt    DirFísica  TamFich TamMem  Opt Alin
+  LOAD           0x001000 0xffff0000 0xffff0000 0x013ac 0x013ac R   0x1000
+  LOAD           0x003000 0x01301000 0xffff1500 0x00000 0x00066 R   0x1000
+  LOAD           0x003000 0x01310000 0xffff2500 0x00062 0x00062 R   0x1000
+  LOAD           0x004000 0x01312000 0xffff3000 0x00025 0x00025 R   0x1000
+  LOAD           0x005000 0x01311000 0xffff3500 0x00000 0x00066 R   0x1000
+  LOAD           0x005000 0x01322000 0xffff4000 0x0001d 0x0001d R   0x1000
+  LOAD           0x006000 0x01321000 0xffff4500 0x00000 0x00066 R   0x1000
+  LOAD           0x006000 0x00000000 0xffff5000 0x00528 0x00528 R   0x1000
+  LOAD           0x007000 0x01200000 0xffff6000 0x00215 0x00215 R   0x1000
+  LOAD           0x008000 0x01202000 0xffff7000 0x0010a 0x0010a R   0x1000
+  LOAD           0x009000 0x01300000 0xffff9000 0x00003 0x00003 R   0x1000
+  LOAD           0x00a000 0xffffa000 0xffffa000 0x0098e 0x0098e R   0x1000
+  LOAD           0x00b000 0x00100000 0xffffb000 0x001b3 0x001b3 R   0x1000
+  LOAD           0x00c000 0x01320000 0xffffc000 0x00002 0x00002 R   0x1000
+  LOAD           0x00d000 0xffffd000 0xffffd000 0x02fff 0x02fff RWE 0x1000
+  LOAD           0x00ffff 0xffffffff 0xffffffff 0x00001 0x00001 RW  0x1000
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RWE 0x10
+
+ mapeo de Sección a Segmento:
+  Segmento Secciones...
+   00     .codigo_init16 
+   01     .task0_bss 
+   02     .task1_txt 
+   03     .task1_data 
+   04     .task1_bss 
+   05     .task2_data 
+   06     .task2_bss 
+   07     .isr 
+   08     .nucleo 
+   09     .datos 
+   10     .task0_txt 
+   11     .codigo_init32 
+   12     .sys_tables 
+   13     .task2_txt 
+   14     .sys_table_gdt16 .functions_rom .codigo_reset .fill_rom 
+   15     .end_rom 
+   16     
+
+No hay sección dinámica en este fichero.
+
+No hay reubicaciones en este fichero.
+
+The decoding of unwind sections for machine type Intel 80386 is not currently supported.
+
+Symbol table '.symtab' contains 319 entries:
+   Num:    Valor  Tam  Tipo    Unión  Vis      Nombre Ind
+     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 01200000     0 SECTION LOCAL  DEFAULT    1 
+     2: 00000000     0 SECTION LOCAL  DEFAULT    2 
+     3: 00100000     0 SECTION LOCAL  DEFAULT    3 
+     4: 01202000     0 SECTION LOCAL  DEFAULT    4 
+     5: 01300000     0 SECTION LOCAL  DEFAULT    5 
+     6: 01301000     0 SECTION LOCAL  DEFAULT    6 
+     7: 01310000     0 SECTION LOCAL  DEFAULT    7 
+     8: 01311000     0 SECTION LOCAL  DEFAULT    8 
+     9: 01312000     0 SECTION LOCAL  DEFAULT    9 
+    10: 01320000     0 SECTION LOCAL  DEFAULT   10 
+    11: 01321000     0 SECTION LOCAL  DEFAULT   11 
+    12: 01322000     0 SECTION LOCAL  DEFAULT   12 
+    13: ffffd000     0 SECTION LOCAL  DEFAULT   13 
+    14: ffff0000     0 SECTION LOCAL  DEFAULT   14 
+    15: ffffa000     0 SECTION LOCAL  DEFAULT   15 
+    16: ffffe000     0 SECTION LOCAL  DEFAULT   16 
+    17: fffffff0     0 SECTION LOCAL  DEFAULT   17 
+    18: fffffff7     0 SECTION LOCAL  DEFAULT   18 
+    19: ffffffff     0 SECTION LOCAL  DEFAULT   19 
+    20: 00000000     0 SECTION LOCAL  DEFAULT   20 
+    21: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/main.s
+    22: 01202000     0 NOTYPE  LOCAL  DEFAULT    4 msg
+    23: 0000004b     0 NOTYPE  LOCAL  DEFAULT  ABS largo
+    24: 0120204b     0 NOTYPE  LOCAL  DEFAULT    4 msg2
+    25: 00000061     0 NOTYPE  LOCAL  DEFAULT  ABS largo2
+    26: 0000003c     0 NOTYPE  LOCAL  DEFAULT  ABS largo3
+    27: 0120006a     0 NOTYPE  LOCAL  DEFAULT    1 Config_Tarea_0
+    28: 01200077     0 NOTYPE  LOCAL  DEFAULT    1 Inicializar_TSS_task_0
+    29: 01200089     0 NOTYPE  LOCAL  DEFAULT    1 Config_Tarea_1
+    30: 01200096     0 NOTYPE  LOCAL  DEFAULT    1 Inicializar_TSS_task_1
+    31: 012000a8     0 NOTYPE  LOCAL  DEFAULT    1 Config_Tarea_2
+    32: 012000b5     0 NOTYPE  LOCAL  DEFAULT    1 Inicializar_TSS_task_2
+    33: 012000e3     0 NOTYPE  LOCAL  DEFAULT    1 Inicializar_Contexto_Tare
+    34: 01200149     0 NOTYPE  LOCAL  DEFAULT    1 Inicializar_Contexto_Tare
+    35: 012001af     0 NOTYPE  LOCAL  DEFAULT    1 Inicializar_Contexto_Tare
+    36: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/keyword.s
+    37: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/irq_handlers.s
+    38: 000000a8     0 NOTYPE  LOCAL  DEFAULT    2 default_isr
+    39: 0000014d     0 NOTYPE  LOCAL  DEFAULT    2 Ejecutar_Idle_Tarea_0
+    40: 0000016f     0 NOTYPE  LOCAL  DEFAULT    2 Ejecutar_Tarea_1
+    41: 00000195     0 NOTYPE  LOCAL  DEFAULT    2 Ejecutar_Tarea_2
+    42: 000001bb     0 NOTYPE  LOCAL  DEFAULT    2 Contexto_Tarea_0
+    43: 000001d8     0 NOTYPE  LOCAL  DEFAULT    2 Contexto_Tarea_1
+    44: 000001f5     0 NOTYPE  LOCAL  DEFAULT    2 Contexto_Tarea_2
+    45: 00000212     0 NOTYPE  LOCAL  DEFAULT    2 Cambiar_a_Tarea_0
+    46: 0000022e     0 NOTYPE  LOCAL  DEFAULT    2 Cambiar_a_Tarea_1
+    47: 0000024a     0 NOTYPE  LOCAL  DEFAULT    2 Cambiar_a_Tarea_2
+    48: 00000266     0 NOTYPE  LOCAL  DEFAULT    2 MismaTarea
+    49: 00000269     0 NOTYPE  LOCAL  DEFAULT    2 Fin_ManejadorTimer
+    50: 0000026a     0 NOTYPE  LOCAL  DEFAULT    2 Guardar_Contexto_Tarea_0
+    51: 000002df     0 NOTYPE  LOCAL  DEFAULT    2 Guardar_Contexto_Tarea_1
+    52: 00000354     0 NOTYPE  LOCAL  DEFAULT    2 Guardar_Contexto_Tarea_2
+    53: 000003c9     0 NOTYPE  LOCAL  DEFAULT    2 Retornar_Contexto_Tarea_0
+    54: 0000043e     0 NOTYPE  LOCAL  DEFAULT    2 Retornar_Contexto_Tarea_1
+    55: 000004b3     0 NOTYPE  LOCAL  DEFAULT    2 Retornar_Contexto_Tarea_2
+    56: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/sys_tables.s
+    57: ffffd000     0 NOTYPE  LOCAL  DEFAULT   13 GDT16
+    58: 00000000     0 NOTYPE  LOCAL  DEFAULT  ABS NULL_SEL_16
+    59: 00000010     0 NOTYPE  LOCAL  DEFAULT  ABS DS_SEL_16
+    60: 00000018     0 NOTYPE  LOCAL  DEFAULT  ABS GDT16_LENGTH
+    61: 00100000     0 NOTYPE  LOCAL  DEFAULT    3 GDT
+    62: 00000000     0 NOTYPE  LOCAL  DEFAULT  ABS NULL_SEL
+    63: 00000027     0 NOTYPE  LOCAL  DEFAULT  ABS GDT_LENGTH
+    64: 0010002d     0 NOTYPE  LOCAL  DEFAULT    3 IDT
+    65: 0010002d     0 NOTYPE  LOCAL  DEFAULT    3 ISR0_DE
+    66: 00100035     0 NOTYPE  LOCAL  DEFAULT    3 ISR1
+    67: 0010003d     0 NOTYPE  LOCAL  DEFAULT    3 ISR2_NMI
+    68: 00100045     0 NOTYPE  LOCAL  DEFAULT    3 ISR3_BP
+    69: 0010004d     0 NOTYPE  LOCAL  DEFAULT    3 ISR4_OF
+    70: 00100055     0 NOTYPE  LOCAL  DEFAULT    3 ISR5_BR
+    71: 0010005d     0 NOTYPE  LOCAL  DEFAULT    3 ISR6_UD
+    72: 00100065     0 NOTYPE  LOCAL  DEFAULT    3 ISR7_NM
+    73: 0010006d     0 NOTYPE  LOCAL  DEFAULT    3 ISR8_DF
+    74: 00100075     0 NOTYPE  LOCAL  DEFAULT    3 ISR9
+    75: 0010007d     0 NOTYPE  LOCAL  DEFAULT    3 ISR10_TS
+    76: 00100085     0 NOTYPE  LOCAL  DEFAULT    3 ISR11_NP
+    77: 0010008d     0 NOTYPE  LOCAL  DEFAULT    3 ISR12_SS
+    78: 00100095     0 NOTYPE  LOCAL  DEFAULT    3 ISR13_GP
+    79: 0010009d     0 NOTYPE  LOCAL  DEFAULT    3 ISR14_PF
+    80: 001000a5     0 NOTYPE  LOCAL  DEFAULT    3 ISR15
+    81: 001000ad     0 NOTYPE  LOCAL  DEFAULT    3 ISR16_MF
+    82: 001000b5     0 NOTYPE  LOCAL  DEFAULT    3 ISR17_AC
+    83: 001000bd     0 NOTYPE  LOCAL  DEFAULT    3 ISR18_MC
+    84: 001000c5     0 NOTYPE  LOCAL  DEFAULT    3 ISR19_XF
+    85: 001000cd     0 NOTYPE  LOCAL  DEFAULT    3 ISR20_31
+    86: 0010012d     0 NOTYPE  LOCAL  DEFAULT    3 ISR_32
+    87: 00100135     0 NOTYPE  LOCAL  DEFAULT    3 ISR_33
+    88: 0010013d     0 NOTYPE  LOCAL  DEFAULT    3 ISR34_47
+    89: 00000180     0 NOTYPE  LOCAL  DEFAULT  ABS IDT_LENGTH
+    90: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/task0.s
+    91: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/task1.s
+    92: 01310000     0 NOTYPE  LOCAL  DEFAULT    7 init_tarea_1
+    93: 01310017     0 NOTYPE  LOCAL  DEFAULT    7 sumar_numeros_1
+    94: 01310018     0 NOTYPE  LOCAL  DEFAULT    7 loop_suma_1
+    95: 01310060     0 NOTYPE  LOCAL  DEFAULT    7 fin_tarea_1
+    96: 0131200d     0 NOTYPE  LOCAL  DEFAULT    9 resultado_suma_1
+    97: 0131201d     0 NOTYPE  LOCAL  DEFAULT    9 cantidad_sumados
+    98: 01312021     0 NOTYPE  LOCAL  DEFAULT    9 DIGITOS
+    99: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/task2.s
+   100: 0132200d     0 NOTYPE  LOCAL  DEFAULT   12 resultado_suma_1
+   101: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/init16.s
+   102: ffff000c     0 NOTYPE  LOCAL  DEFAULT   14 A20_Enable_No_Stack_retur
+   103: ffff004f     0 NOTYPE  LOCAL  DEFAULT   14 A20_Enable_No_Stack
+   104: ffff0056     0 NOTYPE  LOCAL  DEFAULT   14 A20_Enable_No_Stack.8042_
+   105: ffff005f     0 NOTYPE  LOCAL  DEFAULT   14 A20_Enable_No_Stack.8042_
+   106: ffff0063     0 NOTYPE  LOCAL  DEFAULT   14 A20_Enable_No_Stack.empty
+   107: ffff006e     0 NOTYPE  LOCAL  DEFAULT   14 A20_Enable_No_Stack.8042_
+   108: ffff0077     0 NOTYPE  LOCAL  DEFAULT   14 A20_Enable_No_Stack.8042_
+   109: ffff0083     0 NOTYPE  LOCAL  DEFAULT   14 A20_Enable_No_Stack.8042_
+   110: ffff008a     0 NOTYPE  LOCAL  DEFAULT   14 A20_Enable_No_Stack.empty
+   111: ffff008c     0 NOTYPE  LOCAL  DEFAULT   14 A20_Enable_No_Stack.a20_e
+   112: ffff008f     0 NOTYPE  LOCAL  DEFAULT   14 endcode
+   113: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/vga.s
+   114: ffff008f     0 NOTYPE  LOCAL  DEFAULT   14 recorrer_bus_pci
+   115: ffff009e     0 NOTYPE  LOCAL  DEFAULT   14 ciclo_recorrer_bus_pci
+   116: ffff00ca     0 NOTYPE  LOCAL  DEFAULT   14 dispositivo_hallado
+   117: ffff00e8     0 NOTYPE  LOCAL  DEFAULT   14 procesar_funcion
+   118: ffff0100     0 NOTYPE  LOCAL  DEFAULT   14 ir_a_siguiente_funcion
+   119: ffff0123     0 NOTYPE  LOCAL  DEFAULT   14 funcion_hallada
+   120: ffff0153     0 NOTYPE  LOCAL  DEFAULT   14 ciclo_llenar_BAR
+   121: ffff01a0     0 NOTYPE  LOCAL  DEFAULT   14 mapeado_en_memoria
+   122: ffff01c2     0 NOTYPE  LOCAL  DEFAULT   14 ajustar_BAR
+   123: ffff01cc     0 NOTYPE  LOCAL  DEFAULT   14 ajustar_siguiente_BAR
+   124: ffff01d9     0 NOTYPE  LOCAL  DEFAULT   14 fin_recorrido_pci
+   125: ffff01d9     0 NOTYPE  LOCAL  DEFAULT   14 habilitar_modo_texto
+   126: ffff01eb     0 NOTYPE  LOCAL  DEFAULT   14 seq_regs_loop
+   127: ffff0208     0 NOTYPE  LOCAL  DEFAULT   14 crtc_regs_loop
+   128: ffff0219     0 NOTYPE  LOCAL  DEFAULT   14 inicializar_paleta
+   129: ffff021e     0 NOTYPE  LOCAL  DEFAULT   14 inicializar_paleta_loop
+   130: ffff023a     0 NOTYPE  LOCAL  DEFAULT   14 graphics_regs_loop
+   131: ffff0254     0 NOTYPE  LOCAL  DEFAULT   14 attrcon_regs_loop
+   132: ffff028b     0 NOTYPE  LOCAL  DEFAULT   14 ciclo_copia_fonts
+   133: ffff02b0     0 NOTYPE  LOCAL  DEFAULT   14 seq_regs_data
+   134: ffff02b5     0 NOTYPE  LOCAL  DEFAULT   14 crtc_regs_data
+   135: ffff02ce     0 NOTYPE  LOCAL  DEFAULT   14 graphics_regs_data
+   136: ffff02d7     0 NOTYPE  LOCAL  DEFAULT   14 attrcon_regs_data
+   137: ffff02ec     0 NOTYPE  LOCAL  DEFAULT   14 palette_data
+   138: ffff03ac     0 NOTYPE  LOCAL  DEFAULT   14 font16x8
+   139: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/init32.s
+   140: ffffa01a     0 NOTYPE  LOCAL  DEFAULT   15 start32_launcher.stack_in
+   141: ffffa89b     0 NOTYPE  LOCAL  DEFAULT   15 PIT_Set_Counter0
+   142: ffffa8b1     0 NOTYPE  LOCAL  DEFAULT   15 InitPIC
+   143: ffffa8d2     0 NOTYPE  LOCAL  DEFAULT   15 init_TSS_BASICA
+   144: ffffa98e     0 NOTYPE  LOCAL  DEFAULT   15 init_tss_tareas
+   145: 00000000     0 FILE    LOCAL  DEFAULT  ABS funtions.c
+   146: 00000000     0 FILE    LOCAL  DEFAULT  ABS src/reset.s
+   147: fffffff7     0 NOTYPE  LOCAL  DEFAULT   17 end
+   148: 00000000     0 NOTYPE  GLOBAL DEFAULT    2 _acumular
+   149: 00320000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_TXT_FIS
+   150: 01312000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_DAT_VMA
+   151: fffffff0     0 NOTYPE  GLOBAL DEFAULT  ABS __RESET_LMA
+   152: 012020ac     0 NOTYPE  GLOBAL DEFAULT    4 msg3
+   153: 01202104     0 NOTYPE  GLOBAL DEFAULT    4 FlagTimer
+   154: 00000066     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_BSS_SIZE__
+   155: 000000d1     0 NOTYPE  GLOBAL DEFAULT    2 isr7_handler_NM
+   156: 000000e9     0 NOTYPE  GLOBAL DEFAULT    2 isr12_handler_SS
+   157: 1ff08000     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_START_32_VMA
+   158: 00301000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_BSS_FIS
+   159: 01300000     0 NOTYPE  GLOBAL DEFAULT    5 Idle_Task_0
+   160: 00000215     0 NOTYPE  GLOBAL DEFAULT  ABS __NUCLEO_SIZE__
+   161: ffff4500     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_BSS_LMA
+   162: 1ffff000     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_TASK0_FIS
+   163: 00321000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_BSS_FIS
+   164: ffffe000     0 NOTYPE  GLOBAL DEFAULT  ABS __FUNCTIONS_ROM_VMA
+   165: ffff0000     0 NOTYPE  GLOBAL DEFAULT  ABS __INIT_16_LMA
+   166: 00010000     0 NOTYPE  GLOBAL DEFAULT  ABS __VIDEO_VMA
+   167: ffffe000     0 NOTYPE  GLOBAL DEFAULT  ABS __FUNCTIONS_ROM_LMA
+   168: ffffe047    44 FUNC    GLOBAL DEFAULT   16 _acumular_en_buffer
+   169: 01202105     0 NOTYPE  GLOBAL DEFAULT    4 CantPag_PF
+   170: 00000010     0 NOTYPE  GLOBAL DEFAULT  ABS DS_SEL
+   171: 01202102     0 NOTYPE  GLOBAL DEFAULT    4 ContTarea2
+   172: 000000c8     0 NOTYPE  GLOBAL DEFAULT    2 isr6_handler_UD
+   173: 00000128     0 NOTYPE  GLOBAL DEFAULT    2 isr_tick
+   174: fffffff0     0 NOTYPE  GLOBAL DEFAULT   17 reset
+   175: 08000000     0 NOTYPE  GLOBAL DEFAULT  ABS __PF_NEW_DIR_VMA
+   176: 04300000     0 NOTYPE  GLOBAL DEFAULT  ABS __TSS_BASICA
+   177: 0000000d     0 NOTYPE  GLOBAL DEFAULT  ABS largo4
+   178: 00713000     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_TASK2_VMA
+   179: 00000066     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_BSS_SIZE__
+   180: ffff0000     0 NOTYPE  GLOBAL DEFAULT  ABS __INIT_16_VMA
+   181: 01312100     0 NOTYPE  GLOBAL DEFAULT  ABS __TSS_TASK1_VMA
+   182: 0000001d     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_DAT_SIZE__
+   183: 00110000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_DIR_PAG_START
+   184: 00100027     0 NOTYPE  GLOBAL DEFAULT    3 _gdtr
+   185: 1ff08fff     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_END_32_FIS
+   186: 1ff08000     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_START_32_FIS
+   187: ffff7000     0 NOTYPE  GLOBAL DEFAULT  ABS __DATOS_LMA
+   188: 00000122     0 NOTYPE  GLOBAL DEFAULT    2 isr32_255_handler
+   189: 01202106     0 NOTYPE  GLOBAL DEFAULT    4 indice
+   190: ffff9000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_TXT_LMA
+   191: 01202000     0 NOTYPE  GLOBAL DEFAULT  ABS __DATOS_VMA
+   192: ffffe073   216 FUNC    GLOBAL DEFAULT   16 _acumular_en_tabla_fin
+   193: ffffe5eb   403 FUNC    GLOBAL DEFAULT   16 suma_a_hexa
+   194: 01322000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_DAT_VMA
+   195: 012020fd     0 NOTYPE  GLOBAL DEFAULT    4 IndiceBufferTeclado
+   196: ffffe28c   272 FUNC    GLOBAL DEFAULT   16 __set_PageTable
+   197: fffffff0     0 NOTYPE  GLOBAL DEFAULT  ABS __RESET_FIS
+   198: 00100000     0 NOTYPE  GLOBAL DEFAULT  ABS __SYS_TABLES_VMA
+   199: 00009000     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_START_16
+   200: 000000ef     0 NOTYPE  GLOBAL DEFAULT    2 isr13_handler_GP
+   201: ffff1500     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_BSS_LMA
+   202: ffffd000     0 NOTYPE  GLOBAL DEFAULT  ABS __GDT16_TABLE_FIS
+   203: 01301000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_BSS_VMA
+   204: 000001b3     0 NOTYPE  GLOBAL DEFAULT  ABS __SYS_SIZE__
+   205: 1fffe000     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_TASK1_FIS
+   206: 00311000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_BSS_FIS
+   207: 1fffd000     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_TASK2_FIS
+   208: ffffe000     0 NOTYPE  GLOBAL DEFAULT  ABS __FUNCTIONS_ROM_FIS
+   209: 000000dd     0 NOTYPE  GLOBAL DEFAULT    2 isr10_handler_TS
+   210: 1ff08fff     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_END_32_VMA
+   211: 012020e9     0 NOTYPE  GLOBAL DEFAULT    4 IndiceTeclaLoop
+   212: ffff008f     0 NOTYPE  GLOBAL DEFAULT   14 VGA_Init
+   213: ffffe40f   371 FUNC    GLOBAL DEFAULT   16 __printf_sum
+   214: 00000110     0 NOTYPE  GLOBAL DEFAULT    2 isr18_handler_MC
+   215: 00713999     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_END_TAREA_VMA
+   216: ffff0000     0 NOTYPE  GLOBAL DEFAULT  ABS __INIT_16_FIS
+   217: 000b8000     0 NOTYPE  GLOBAL DEFAULT  ABS __VIDEO_FIS
+   218: 00130000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_DIR_PAG_START
+   219: 01311000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_BSS_VMA
+   220: 000000b6     0 NOTYPE  GLOBAL DEFAULT    2 isr3_handler_BP
+   221: 00110000     0 NOTYPE  GLOBAL DEFAULT  ABS __PAGTABLE_VMA
+   222: 000000aa     0 NOTYPE  GLOBAL DEFAULT    2 isr0_handler_DE
+   223: 01322000     0 NOTYPE  GLOBAL DEFAULT   12 msg5
+   224: 00000066     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_BSS_SIZE__
+   225: 00000008     0 NOTYPE  GLOBAL DEFAULT  ABS CS_SEL_32
+   226: ffff3500     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_BSS_LMA
+   227: 000000a2     0 NOTYPE  GLOBAL DEFAULT    2 fin_int
+   228: 01310000     0 NOTYPE  GLOBAL DEFAULT    7 task1
+   229: 000000bc     0 NOTYPE  GLOBAL DEFAULT    2 isr4_handler_OF
+   230: 00000025     0 NOTYPE  GLOBAL DEFAULT    2 _grabar
+   231: ffffa000     0 NOTYPE  GLOBAL DEFAULT  ABS __INIT_32_FIS
+   232: 012020ed     0 NOTYPE  GLOBAL DEFAULT    4 BufferTablaTeclado
+   233: 012020e8     0 NOTYPE  GLOBAL DEFAULT    4 Cant_digitos_tabla
+   234: 01320000     0 NOTYPE  GLOBAL DEFAULT   10 task2
+   235: 00000116     0 NOTYPE  GLOBAL DEFAULT    2 isr19_handler_XF
+   236: 00000000     0 NOTYPE  GLOBAL DEFAULT  ABS __HANDLERS_FIS
+   237: 00000101     0 NOTYPE  GLOBAL DEFAULT    2 isr16_handler_MF
+   238: 000000c2     0 NOTYPE  GLOBAL DEFAULT    2 isr5_handler_BR
+   239: ffff6000     0 NOTYPE  GLOBAL DEFAULT  ABS __NUCLEO_LMA
+   240: ffffe24f    61 FUNC    GLOBAL DEFAULT   16 __set_cr3
+   241: 01320000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_TXT_VMA
+   242: 000003ff     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_SIZE_32
+   243: 012020fe     0 NOTYPE  GLOBAL DEFAULT    4 TareaActual
+   244: 00000002     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_TXT_SIZE__
+   245: 00009fff     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_END_16
+   246: 01200000     0 NOTYPE  GLOBAL DEFAULT  ABS __NUCLEO_VMA
+   247: 00300000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_TXT_FIS
+   248: 00202000     0 NOTYPE  GLOBAL DEFAULT  ABS __DATOS_FIS
+   249: 012020ec     0 NOTYPE  GLOBAL DEFAULT    4 CantPalabras
+   250: 00000008     0 NOTYPE  GLOBAL DEFAULT  ABS CS_SEL_16
+   251: 00000000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_DAT_SIZE__
+   252: ffffe77e    74 FUNC    GLOBAL DEFAULT   16 clean_numeros
+   253: ffff2500     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_TXT_LMA
+   254: fffffff0     0 NOTYPE  GLOBAL DEFAULT  ABS __RESET_VMA
+   255: 00000528     0 NOTYPE  GLOBAL DEFAULT  ABS __HANDLERS_SIZE_
+   256: 00000014     0 NOTYPE  GLOBAL DEFAULT    2 _tabla_aux
+   257: 01302000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_DAT_VMA
+   258: 01311000     0 NOTYPE  GLOBAL DEFAULT    8 TSS_task_1
+   259: 01321000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_BSS_VMA
+   260: 00312000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_DAT_FIS
+   261: 01322100     0 NOTYPE  GLOBAL DEFAULT  ABS __TSS_TASK2_VMA
+   262: 001001ad     0 NOTYPE  GLOBAL DEFAULT    3 _idtr
+   263: 012020eb     0 NOTYPE  GLOBAL DEFAULT    4 CantDigitos
+   264: ffffe582   105 FUNC    GLOBAL DEFAULT   16 update_num_ingresados
+   265: ffffa000     0 NOTYPE  GLOBAL DEFAULT  ABS __INIT_32_VMA
+   266: 000000e3     0 NOTYPE  GLOBAL DEFAULT    2 isr11_handler_NP
+   267: 00110000     0 NOTYPE  GLOBAL DEFAULT  ABS __PAGTABLE_FIS
+   268: 01321000     0 NOTYPE  GLOBAL DEFAULT   11 TSS_task_2
+   269: 000000d7     0 NOTYPE  GLOBAL DEFAULT    2 isr8_handler_DF
+   270: 00000025     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_DAT_SIZE__
+   271: 00100000     0 NOTYPE  GLOBAL DEFAULT  ABS __SYS_TABLES_FIS
+   272: 00000000     0 NOTYPE  GLOBAL DEFAULT  ABS __HANDLERS_VMA
+   273: ffffe7c8    33 FUNC    GLOBAL DEFAULT   16 __entry
+   274: 0000011c     0 NOTYPE  GLOBAL DEFAULT    2 isr20_handler_VE
+   275: 01302100     0 NOTYPE  GLOBAL DEFAULT  ABS __TSS_TASK0_VMA
+   276: 012020ea     0 NOTYPE  GLOBAL DEFAULT    4 IndiceTablaDigitos
+   277: 00302000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_DAT_FIS
+   278: ffffe39c   115 FUNC    GLOBAL DEFAULT   16 __my_printf
+   279: ffffe14b   260 FUNC    GLOBAL DEFAULT   16 _acumular_en_tabla_aux
+   280: 000000f8     0 NOTYPE  GLOBAL DEFAULT    2 isr14_handler_PF
+   281: 0000010a     0 NOTYPE  GLOBAL DEFAULT  ABS __DATOS_SIZE__
+   282: ffff5000     0 NOTYPE  GLOBAL DEFAULT  ABS __HANDLERS_LMA
+   283: fffffff4     0 NOTYPE  GLOBAL DEFAULT   17 halted
+   284: 01202100     0 NOTYPE  GLOBAL DEFAULT    4 ContTarea1
+   285: ffffd000     0 NOTYPE  GLOBAL DEFAULT  ABS __GDT16_TABLE_LMA
+   286: 00713000     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_TASK0_VMA
+   287: 0000000d     0 NOTYPE  GLOBAL DEFAULT  ABS largo5
+   288: 01312000     0 NOTYPE  GLOBAL DEFAULT    9 msg4
+   289: 01210000     0 NOTYPE  GLOBAL DEFAULT  ABS __TABLA_DIGITO_VMA
+   290: 00000018     0 NOTYPE  GLOBAL DEFAULT  ABS NO_SEL_32
+   291: ffffd018     0 NOTYPE  GLOBAL DEFAULT   13 _gdtr16
+   292: 000000b0     0 NOTYPE  GLOBAL DEFAULT    2 isr2_handler_NMI
+   293: ffff0000     0 NOTYPE  GLOBAL DEFAULT   14 start16
+   294: 0000007e     0 NOTYPE  GLOBAL DEFAULT    2 isr_teclado
+   295: 01200000     0 NOTYPE  GLOBAL DEFAULT    1 start32
+   296: ffff3000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_DAT_LMA
+   297: ffff2000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_DAT_LMA
+   298: 00000020     0 NOTYPE  GLOBAL DEFAULT  ABS TSS_SEL
+   299: 00310000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_TXT_FIS
+   300: 012020ff     0 NOTYPE  GLOBAL DEFAULT    4 TareaProx
+   301: 01310000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_TXT_VMA
+   302: 0000010a     0 NOTYPE  GLOBAL DEFAULT    2 isr17_handler_AC
+   303: ffffa000     0 NOTYPE  GLOBAL DEFAULT  ABS __INIT_32_LMA
+   304: ffffb000     0 NOTYPE  GLOBAL DEFAULT  ABS __SYS_TABLES_LMA
+   305: 00322000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_DAT_FIS
+   306: ffffe000    71 FUNC    GLOBAL DEFAULT   16 __fast_memcpy_rom
+   307: 00000062     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_TXT_SIZE__
+   308: 01301000     0 NOTYPE  GLOBAL DEFAULT    6 TSS_task_0
+   309: 00120000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK1_DIR_PAG_START
+   310: ffffa000     0 NOTYPE  GLOBAL DEFAULT   15 start32_launcher
+   311: 01300000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_TXT_VMA
+   312: ffffc000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_TXT_LMA
+   313: 00713000     0 NOTYPE  GLOBAL DEFAULT  ABS __STACK_TASK1_VMA
+   314: ffffd000     0 NOTYPE  GLOBAL DEFAULT  ABS __GDT16_TABLE_VMA
+   315: ffff4000     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK2_DAT_LMA
+   316: 00200000     0 NOTYPE  GLOBAL DEFAULT  ABS __NUCLEO_FIS
+   317: 00000003     0 NOTYPE  GLOBAL DEFAULT  ABS __TASK0_TXT_SIZE__
+   318: 00210000     0 NOTYPE  GLOBAL DEFAULT  ABS __TABLA_DIGITO_FIS
+
+No se encontró información de versión en este fichero.
