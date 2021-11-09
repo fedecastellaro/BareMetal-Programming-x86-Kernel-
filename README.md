@@ -1,4 +1,4 @@
-#BareMetal x86 OS - Boschs Simulator
+# BareMetal x86 OS - Boschs Simulator
 
 In this repository you will find my progress in BareMetal x86 programming.
 
